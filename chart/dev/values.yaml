@@ -1,0 +1,49 @@
+---
+knight-light-sso:
+  image:
+    repository: 
+      artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-sso
+    pullPolicy: Always
+    # -- Overrides the image tag whose default is the chart appVersion.
+    tag: "7c6ce5fc"
+  domain: batcave-ispg-nonprod.internal.cms.gov
+  istio:
+    # -- Enable and disable istio specific components
+    enabled: true
+    mtls:
+      # -- STRICT = Allow only mutual TLS traffic,
+      # PERMISSIVE = Allow both plain text and mutual TLS traffic
+      # PERMISSIVE is required for any action which redeploys pods because STRICT interferes with initContainers
+      # Can be changed to STRICT after all initContainers have finished but will interfere with upgrades/pod deployments that have initContainers
+      mode: PERMISSIVE
+    regscale:
+      enabled: true
+      gateways:
+      - istio-system/main
+      hosts:
+      - regscale-dev.batcave-ispg-nonprod.internal.cms.gov
+
+  mssql:
+    # -- Flag for enabling/disabling a MSSQL server for self contained deployment
+    enabled: false
+    tolerations: []
+
+  externalDb:
+    # -- Flag for adding NetPol rule to allow external mssql traffic from RegScale
+    mssql: true
+
+  smtp:
+    # -- Flag for adding NetPol rule to allow external SMTP traffic from RegScale
+    enabled: true
+
+
+  networkPolicies:
+    enabled: false
+namespace:
+  name: regscale-dev
+dbMigrationJob:
+  name: db-migration-job-2023-06-08
+  enabled: true
+  mssqlServer: regscale-nonprod-db.cuttaaplvvd8.us-east-1.rds.amazonaws.com
+  databaseName: ATLASDEV
+  newDatabaseName: ATLASTEST

@@ -1,0 +1,1 @@
+These patches are used to provide updates to each of the container deployments in order to allow RapidFort stub capabilities to function.

@@ -1,0 +1,7 @@
+resources:
+  - ../../base
+  - resources/virtual-service.yaml
+
+components:
+  - secrets/artifactory-registry/
+  - secrets/sitestream/

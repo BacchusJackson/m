@@ -1,0 +1,51 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: knight-light-route
+spec:
+  hosts:
+  - "knight-light.batcave-test.internal.cms.gov"
+  gateways:
+  - "istio-system/main"
+  http:
+  - match:
+    - uri:
+        prefix: "/go-api/"
+    - uri:
+        exact: "/go-api"
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: knight-light-server-go.knight-light.svc.cluster.local
+  - match:
+    - uri:
+        prefix: "/java-api/"
+    - uri:
+        exact: "/java-api"
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: knight-light-server-java.knight-light.svc.cluster.local
+  - match:
+    - uri:
+        prefix: "/nodejs-api/"
+    - uri:
+        exact: "/nodejs-api"
+    rewrite:
+      uri: "/"
+    route:
+      - destination:
+          host: knight-light-server-nodejs.knight-light.svc.cluster.local
+  - match:
+    - uri:
+        prefix: "/sso"
+    rewrite:
+        uri: /
+    route:
+    - destination:
+        host: knight-light-sso.knight-light.svc.cluster.local 
+  - route:
+    - destination:
+        host: knight-light-home.knight-light.svc.cluster.local

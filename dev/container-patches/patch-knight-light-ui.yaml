@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knight-light-ui
+spec:
+  template:
+    spec:
+      containers:
+        - name: knight-light-ui
+          securityContext:
+            allowPrivilegeEscalation: true
+            readOnlyRootFilesystem: false
+            capabilities:
+              add:
+                - SYS_PTRACE

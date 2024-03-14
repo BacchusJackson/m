@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knight-light-sso
+spec:
+  template:
+    spec:
+      containers:
+        - name: knight-light-sso
+          securityContext:
+            allowPrivilegeEscalation: true
+            readOnlyRootFilesystem: false
+            capabilities:
+              add:
+                - SYS_PTRACE

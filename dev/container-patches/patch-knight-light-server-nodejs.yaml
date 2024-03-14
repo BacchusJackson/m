@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knight-light-server-nodejs
+spec:
+  template:
+    spec:
+      containers:
+        - name: knight-light-server-nodejs
+          securityContext:
+            allowPrivilegeEscalation: true
+            readOnlyRootFilesystem: false
+            capabilities:
+              add:
+                - SYS_PTRACE

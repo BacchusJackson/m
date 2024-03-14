@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knight-light-ui
+spec:
+  revisionHistoryLimit: 2
+  replicas: 1
+  selector:
+    matchLabels:
+      micro-svc: knight-light-ui
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  template:
+    spec:
+      terminationGracePeriodSeconds: 15
+      imagePullSecrets:
+        - name: artifactory-registry
+      containers:
+        - name: knight-light-ui
+          image: knight-light-ui
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 0.5
+              memory: 512Mi
+            requests:
+              cpu: 0.1
+              memory: 64Mi
+          workingDir: /app
+          ports:
+            - containerPort: 3000
+            

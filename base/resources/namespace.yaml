@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: knight-light
+  labels:
+    istio-injection: enabled
+    name: knight-light
+    organization: nightwing
+    product: knight-light

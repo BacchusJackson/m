@@ -1,0 +1,60 @@
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: knight-light
+
+  
+resources:
+- base/
+
+images:
+- name: knight-light-home
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-home
+  newTag: latest
+- name: knight-light-mono-chat-api
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-mono-repo/chat-api
+  newTag: 5e02634b
+- name: knight-light-mono-counter-api
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-mono-repo/counter-api
+  newTag: 5e02634b
+- name: knight-light-mono-frontend
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-mono-repo/frontend
+  newTag: 5e02634b
+- name: knight-light-server-flask
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-flask
+  newTag: 78122c0c
+- name: knight-light-server-go
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-go
+  newTag: 394ab052
+- name: knight-light-server-java
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-java
+  newTag: a519abb1
+- name: knight-light-server-nodejs
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-nodejs
+  newTag: cb130c39
+- name: knight-light-sso
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-sso
+  newTag: efc0703e
+- name: knight-light-ui
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-ui
+  newTag: "37790114"
+- name: sitestream
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/sitestream
+  newTag: c36a13c6
+
+patches:
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: knight-light
+    spec:
+      template:
+        spec:
+          tolerations:
+            - key: "knightlight"
+              operator: "Exists"
+              effect: "NoSchedule"
+  target:
+    kind: Deployment

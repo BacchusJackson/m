@@ -1,0 +1,44 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: knight-light
+
+  
+resources:
+- base/
+
+images:
+- name: knight-light-home
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-home
+  newTag: "latest"
+- name: knight-light-server-go
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server
+  newTag: "b09a78f9"
+- name: knight-light-server-java
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-java
+  newTag: "13b2b213"
+- name: knight-light-server-nodejs
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-nodejs
+  newTag: "5c54c813"
+- name: knight-light-sso
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-sso
+  newTag: "efc0703e"
+- name: knight-light-ui
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-ui
+  newTag: "e4363fe3-rfstub"
+
+patches:
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: knight-light
+    spec:
+      template:
+        spec:
+          tolerations:
+            - key: "knightlight"
+              operator: "Exists"
+              effect: "NoSchedule"
+  target:
+    kind: Deployment
