@@ -20,46 +20,6 @@ spec:
         host: knight-light-ui.knight-light.svc.cluster.local
   - match:
     - uri:
-        prefix: "/mono-frontend/"
-    - uri:
-        exact: "/mono-frontend"
-    rewrite:
-      uri: "/"
-    route:
-    - destination:
-        host: knight-light-mono-frontend.knight-light.svc.cluster.local
-  - match:
-    - uri:
-        prefix: "/mono-chat-api/"
-    - uri:
-        exact: "/mono-chat-api"
-    rewrite:
-      uri: "/"
-    route:
-    - destination:
-        host: knight-light-mono-chat-api.knight-light.svc.cluster.local
-  - match:
-    - uri:
-        prefix: "/mono-counter-api/"
-    - uri:
-        exact: "/mono-counter-api"
-    rewrite:
-      uri: "/"
-    route:
-    - destination:
-        host: knight-light-mono-counter-api.knight-light.svc.cluster.local
-  - match:
-    - uri:
-        prefix: "/sitestream/"
-    - uri:
-        exact: "/sitestream"
-    rewrite:
-      uri: "/"
-    route:
-    - destination:
-        host: sitestream.knight-light.svc.cluster.local
-  - match:
-    - uri:
         prefix: "/go-api/"
     - uri:
         exact: "/go-api"
@@ -88,14 +48,6 @@ spec:
     route:
       - destination:
           host: knight-light-server-nodejs.knight-light.svc.cluster.local
-  - match:
-    - uri:
-        prefix: "/sso"
-    rewrite:
-        uri: /
-    route:
-    - destination:
-        host: knight-light-sso.knight-light.svc.cluster.local 
   - match:
     - uri:
         prefix: "/flask-api/"

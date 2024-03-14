@@ -8,24 +8,21 @@ resources:
 - base/
 
 images:
-- name: knight-light-home
-  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-home
-  newTag: "latest"
+- name: knight-light-server-flask
+  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-flask
+  newTag: 208c3e6f
 - name: knight-light-server-go
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server
-  newTag: "b09a78f9"
+  newTag: b09a78f9
 - name: knight-light-server-java
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-java
-  newTag: "13b2b213"
+  newTag: 681e80e5-rfstub
 - name: knight-light-server-nodejs
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-nodejs
-  newTag: "5c54c813"
-- name: knight-light-sso
-  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-sso
-  newTag: "efc0703e"
+  newTag: 93a6caaa
 - name: knight-light-ui
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-ui
-  newTag: "e4363fe3-rfstub"
+  newTag: e4363fe3
 
 patches:
 - patch: |-
@@ -42,3 +39,10 @@ patches:
               effect: "NoSchedule"
   target:
     kind: Deployment
+
+patchesStrategicMerge:
+- container-patches/patch-knight-light-server-flask.yaml
+- container-patches/patch-knight-light-server-go.yaml
+- container-patches/patch-knight-light-server-java.yaml
+- container-patches/patch-knight-light-server-nodejs.yaml
+- container-patches/patch-knight-light-ui.yaml

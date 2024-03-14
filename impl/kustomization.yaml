@@ -9,18 +9,6 @@ resources:
 - base/
 
 images:
-- name: knight-light-home
-  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-home
-  newTag: latest
-- name: knight-light-mono-chat-api
-  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-mono-repo/chat-api
-  newTag: 5e02634b
-- name: knight-light-mono-counter-api
-  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-mono-repo/counter-api
-  newTag: 5e02634b
-- name: knight-light-mono-frontend
-  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-mono-repo/frontend
-  newTag: 5e02634b
 - name: knight-light-server-flask
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-flask
   newTag: 78122c0c
@@ -33,15 +21,9 @@ images:
 - name: knight-light-server-nodejs
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-nodejs
   newTag: cb130c39
-- name: knight-light-sso
-  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-sso
-  newTag: efc0703e
 - name: knight-light-ui
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-ui
   newTag: "37790114"
-- name: sitestream
-  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/sitestream
-  newTag: c36a13c6
 
 patches:
 - patch: |-
