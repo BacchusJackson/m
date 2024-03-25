@@ -10,6 +10,8 @@ resources:
 images:
 - name: ghcr.io/cms-enterprise/batcave/knight-light-go-server
   newTag: 3d08bc98
+- name: ghcr.io/cms-enterprise/batcave/knight-light-ui
+  newTag: b8ae2e44
 - name: knight-light-server-flask
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-flask
   newTag: 208c3e6f
