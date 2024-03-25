@@ -10,6 +10,8 @@ resources:
 images:
 - name: ghcr.io/cms-enterprise/batcave/knight-light-go-server
   newTag: 3517a001
+- name: ghcr.io/cms-enterprise/batcave/knight-light-java-server
+  newTag: 0a1e26fb
 - name: ghcr.io/cms-enterprise/batcave/knight-light-python-server
   newTag: 3517a001
 - name: ghcr.io/cms-enterprise/batcave/knight-light-ui
