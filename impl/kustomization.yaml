@@ -13,8 +13,8 @@ images:
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-flask
   newTag: 78122c0c
 - name: knight-light-server-go
-  newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-go
-  newTag: 394ab052
+  newName: ttl.sh/0900c13b-5236-4954-9fed-9488bd1d1cd4
+  newTag: 30m
 - name: knight-light-server-java
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-java
   newTag: a519abb1
