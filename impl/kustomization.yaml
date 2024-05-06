@@ -13,7 +13,7 @@ images:
   newName: some-experimental-image
   newTag: abc123
 - name: knight-light-server-go
-  newName: some-new-image
+  newName: some-new-new-image
   newTag: latest
 - name: knight-light-server-java
   newName: artifactory.cloud.cms.gov/batcave-docker/ado-repositories/nightwing/knight-light/knight-light-server-java
